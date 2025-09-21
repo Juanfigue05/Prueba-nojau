@@ -37,6 +37,7 @@
                 <input type="text" name="updated_at" class="form-control" id="updated_at" value="{{ $user->updated_at }}" readonly>
             </div>
             <button type="submit" class="btn btn-primary">Actualizar</button>
+            <a class="btn btn-warning" href="{{route('users.index')}}">Volver</a>
         </form>
     </div>
 
