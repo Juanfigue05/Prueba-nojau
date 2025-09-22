@@ -26,6 +26,7 @@ class UserRequest extends FormRequest
             'email' => 'required|string|max:255|email',
             'phone' => 'required|string|max:16',
             'dni' => 'required|string|max:16',
+            'password'=> 'required|string|min:8|max:255',
         ];
     }
     public function messages(): array
@@ -38,6 +39,8 @@ class UserRequest extends FormRequest
             'phone.max'=> 'El teléfono no debe ser mayor a 16 caracteres incluyendo símbolos(+ - .)',
             'dni.required' => 'El DNI es obligatorio',
             'dni.max'=> 'El DNI no debe ser mayor a 16 caracteres',
+            'password.required'=> 'La contraseña es obligatoria',
+            'password.min'=> 'La contraseña debe tener al menos 8 caracteres',
         ];
     }
 }

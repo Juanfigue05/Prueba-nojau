@@ -53,6 +53,15 @@
 <body>
     <div class="container">
         <h1 class="mt-4">Editar Usuario</h1>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="{{ route('users.update', $user->id ) }}" method="POST" class="mt-4">
             @csrf
             @method('PUT')
@@ -65,7 +74,7 @@
             </div>
             <div class="mb-2">
                 <label for="email">Correo</label>
-                <input type="email" name="email" class="form-control" id="email" value="{{ $user->email }}">
+                <input type="text" name="email" class="form-control" id="email" value="{{ $user->email }}">
                 @error('email')
                 <p style="color:red">{{ $message }}</p>
                 @enderror   

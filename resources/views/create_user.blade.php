@@ -58,23 +58,38 @@
             <div class="mb-2">
                 <label for="name">Nombre</label>
                 <input type="text" name="name" class="form-control" id="name" >
+                @error('name')
+                    <p style="color:red">{{ $message }}</p>
+                @enderror
             </div>
             
             <div class="mb-2">
                 <label for="email">Correo</label>
-                <input type="email" name="email" class="form-control" id="email">
+                <input type="text" name="email" class="form-control" id="email">
+                @error('email')
+                    <p style="color:red">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-2">
                 <label for="phone">Teléfono</label>
                 <input type="text" name="phone" class="form-control" id="phone" >
+                @error('phone')
+                    <p style="color:red">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-2">
                 <label for="dni">DNI</label>
                 <input type="text" name="dni" class="form-control" id="dni" >
+                @error('dni')
+                    <p style="color:red">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-2">
                 <label for="password">Contraseña</label>
-                <input type="password" name="password" class="form-control" id="password" >
+                <input type="text" name="password" class="form-control" id="password" >
+                @error('password')
+                    <p style="color:red">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-2">
                 <label for="created_at">Fecha de registro</label>
