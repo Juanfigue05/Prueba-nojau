@@ -74,6 +74,7 @@
                         <th>Teléfono</th>
                         <th>DNI</th>
                         <th>Fecha de registro</th>
+                        <th>Fecha de Edicion</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -86,6 +87,7 @@
                             <td>{{ $user->phone ?? 'N/A' }}</td>
                             <td>{{ $user->dni ?? 'N/A' }}</td>
                             <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
+                            <td>{{ $user->updated_at->format('d/m/Y H:i') }}</td>
                             <td>
                                 <a href="{{ route('users.edit', $user->id) }}" class="btn-edit">Editar</a>
                                 <form style="display: inline;" method="POST" action="{{ route('users.destroy', $user->id) }}">
