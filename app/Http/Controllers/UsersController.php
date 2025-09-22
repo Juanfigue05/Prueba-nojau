@@ -21,7 +21,7 @@ class UsersController extends Controller
 
     public function store(UserRequest $request)
     {
-        User::create($request->all());
+        User::create($request->validated());
         return redirect()->route('users.index')->with('success','Usuario creado Exitosamente.');
     }
 
@@ -30,9 +30,9 @@ class UsersController extends Controller
         return view('edit_user', compact('user'));
     }
 
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
-        $user->update($request->all());
+        $user->update($request->validated());
         return redirect()->route('users.index')->with('success','Información de usuario editada con éxito.');
     }
 

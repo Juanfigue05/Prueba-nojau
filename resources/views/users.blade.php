@@ -53,7 +53,7 @@
         @endif
     </head>
     <body>
-        <div class="container">
+        <div class="container-xl">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
                 <h1 style="margin-bottom: 0;">Lista de Usuarios</h1>
                 <a href="{{ route('users.create') }}" class="btn-create">
@@ -65,9 +65,17 @@
                 Total de usuarios: {{ $users->count() }}
             </div>
 
-            <table class="table">
-                <thead class="table table-dark">
-                    <tr>
+            <table class="table table-striped text-center">
+                <thead class="table-dark">
+                    <style>
+                        .tr-centered th,td {
+                            align-content: center !important;
+                            align-items: center !important;
+                            text-align: center !important;
+                            vertical-align: middle !important;
+                        }
+                    </style>
+                    <tr class="tr-centered">
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Email</th>
@@ -80,7 +88,7 @@
                 </thead>
                 <tbody>
                     @forelse($users as $user)
-                        <tr>
+                        <tr class="tr-centered">
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
@@ -89,12 +97,22 @@
                             <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
                             <td>{{ $user->updated_at->format('d/m/Y H:i') }}</td>
                             <td>
-                                <a href="{{ route('users.edit', $user->id) }}" class="btn-edit">Editar</a>
-                                <form style="display: inline;" method="POST" action="{{ route('users.destroy', $user->id) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn-delete" onclick="return confirm('¿Estás seguro de eliminar este usuario?')">Eliminar</button>
-                                </form>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <a href="{{ route('users.edit', $user->id) }}" class="btn-edit">Editar</a>
+                                        </div>
+                                        <div class="col-6">
+                                            <form style="display: block;" method="POST" action="{{ route('users.destroy', $user->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn-delete" onclick="return confirm('¿Estás seguro de eliminar este usuario?')">Eliminar</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
                             </td>
                         </tr>
                     @empty
